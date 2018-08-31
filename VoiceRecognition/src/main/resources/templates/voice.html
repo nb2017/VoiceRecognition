@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>SPRING DATA JPA</title>
+</head>
+<body>
+  <form method="POST" name="form">
+    音声データ追加: <input type="text" name="voiceData" value="" />
+    <input type="submit" value="追加" />
+  </form>
+  <form th:action="@{/voice/update}" method="post">
+    全件更新：<input class="btn btn-danger" type="submit" value="更新"/>
+  </form>
+  <form th:action="@{/voice/delete}" method="post">
+    音声データ全削除：<input class="btn btn-danger" type="submit" value="削除"/>
+  </form>
+
+
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th>ID</th>
+        <th>音声データ</th>
+    </tr>
+    <tr th:each="voice : ${voices}">
+        <td th:text="${voice.id}">1</td>
+        <td th:text="${voice.voice}">音声仮</td>
+        <td th:text="${voice.userid}">ユーザ名</td>
+        <td th:text="${voice.date}">日時</td>
+    </tr>
+</table>
+
+</body>
+</html>

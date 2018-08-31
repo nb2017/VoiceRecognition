@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>SPRING DATA JPA</title>
+</head>
+<body>
+  <form method="POST" name="form">
+    ユーザーID: <input type="text" name="userId" value="" />
+    <input type="submit" value="検索" />
+  </form>
+
+  <div th:if="${user != null}">
+    <p th:text="${user.id}"></p>
+    <p th:text="${user.accounttype}"></p>
+    <p th:text="${user.password}"></p>
+    <p th:text="${user.nickname}"></p>
+  </div>
+
+</body>
+</html>
