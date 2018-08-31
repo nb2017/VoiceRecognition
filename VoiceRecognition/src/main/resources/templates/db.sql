@@ -1,3 +1,5 @@
+CREATE DATABASE GMC;
+
 CREATE TABLE usr(
   id int(11) NOT NULL auto_increment,
   accounttype int(1),
