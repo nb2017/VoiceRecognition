@@ -56,6 +56,15 @@ public class VoiceController {
         return index(mov);
     }
     // --------------------------------------------------------------------
+    // 音声データ　指定削除
+    // --------------------------------------------------------------------
+    @PostMapping(path = "select_delete")
+    String select_delete(Model mov, @RequestParam("voiceID") String voiceID) {
+		int id = Integer.parseInt(voiceID);
+        service.Delete(id);
+        return "redirect:/voice";
+    }
+    // --------------------------------------------------------------------
     // 音声データ　全削除
     // --------------------------------------------------------------------
     @PostMapping(path = "delete")

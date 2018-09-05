@@ -24,6 +24,10 @@ public class VoiceService {
 
 		return list;
 	}
+	public void Delete(int id){
+		repository.delete(id);
+	}
+
 	public void AllDelete(){
 		repository.deleteAll();
 	}
