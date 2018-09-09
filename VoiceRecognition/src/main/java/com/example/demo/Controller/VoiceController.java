@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import com.example.demo.Entity.Voice;
@@ -36,8 +37,8 @@ public class VoiceController {
 	public String userList(Model mov, @RequestParam("voiceData") String voiceData) {
 		Voice voice = new Voice();
 		// データセット 日時
-		java.util.Date nowTime = new java.util.Date();
-		Date date = new Date(nowTime.getTime());
+        java.util.Date nowTime = java.util.Calendar.getInstance().getTime();
+        Date date = new Date(nowTime.getTime());
 		voice.setDate(date);
 		// データセット ユーザID
 		Integer userID = 1; // 仮番号 今後置き換えます。
@@ -53,7 +54,8 @@ public class VoiceController {
     // --------------------------------------------------------------------
     @PostMapping(path = "update")
     String update(Model mov) {
-        return index(mov);
+        index(mov);
+        return "redirect:/voice";
     }
     // --------------------------------------------------------------------
     // 音声データ　指定削除
