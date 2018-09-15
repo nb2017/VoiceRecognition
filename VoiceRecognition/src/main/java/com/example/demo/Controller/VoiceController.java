@@ -62,8 +62,10 @@ public class VoiceController {
     // --------------------------------------------------------------------
     @PostMapping(path = "select_delete")
     String select_delete(Model mov, @RequestParam("voiceID") String voiceID) {
-		int id = Integer.parseInt(voiceID);
-        service.Delete(id);
+        int id = Integer.parseInt(voiceID);
+        if( service.FindOne(id) != null){
+            service.Delete(id);
+        }
         return "redirect:/voice";
     }
     // --------------------------------------------------------------------

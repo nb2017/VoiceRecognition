@@ -24,6 +24,11 @@ public class VoiceService {
 
 		return list;
 	}
+	public Voice FindOne(int id){
+		Voice data = repository.findOne(id);
+		return data;
+	}
+
 	public void Delete(int id){
 		repository.delete(id);
 	}
