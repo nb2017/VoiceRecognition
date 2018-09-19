@@ -22,20 +22,20 @@ h1{
   <h1>音声データ収集システム　動作テスト画面</h1>
 
   <form method="POST" name="form" style="background-color: Silver; ">
-    <big><h4>音声データ追加:</h4></big> <input type="text" name="voiceData" value="" style="height: 66px; width: 533px"/>
-    <input type="submit" value="追加" style="width: 446px; height: 67px"/>
+    <big><h4>音声データ追加:</h4></big> <textarea name="voiceData" value="" rows="5" style="height: 30px; width: 300px"></textarea>
+    <input type="submit" value="追加" style="width: 300px; height: 30px"/>
   </form>
   <form th:action="@{/voice/update}" method="post" style="background-color: Silver; ">
     <h3>全件更新：</h3><input class="btn btn-danger" type="submit" value="更新" style="width: 253px; height: 44px"/>
   </form>
 
   <form th:action="@{/voice/select_delete}" method="post" style="background-color: Silver; ">
-    <h3>指定のデータ(ID)削除: </h3><input type="text" name="voiceID" value="" style="height: 50px; "/>
+    <h3>指定のデータ(ID)削除: </h3><input type="text" name="voiceID" value="" style="height: 20px; "/>
     <input type="submit" value="削除" style="width: 202px; height: 49px"/>
   </form>
   
   <form th:action="@{/voice/delete}" method="post" style="background-color: Silver; ">
-    <h3>音声データ全削除：<input class="btn btn-danger" type="submit" value="削除" style="width: 195px; height: 39px"/></h3>
+    <h3>音声データ全削除：<input class="btn btn-danger" type="submit" value="削除" style="width: 195px; height: 30px"/></h3>
   </form>
 
 
