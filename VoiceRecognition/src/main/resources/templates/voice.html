@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" style="background-color: White; ">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <!--
@@ -8,53 +8,63 @@
 <meta name="viewport" content="width=360,initial-scale=1" />
 <title>音声データ収集システム</title>
 <style>
-
-h1{
+body{
+  background-color: slategray;
+}
+#title{
     font-size:17px; 
     color:black;
     background-color: cadetblue;
     text-align: center;
 }
+#voicedata{
+    font-size:17px;
+    display: -ms-grid;   
+    grid-template-rows: 100px 50px;
+    grid-template-columns: 150px 1fr;
+    grid-row:1;
+    grid-column: 2;
+}
 
 </style>
 </head>
 <body>
-  <h1>音声データ収集システム　動作テスト画面</h1>
-
-  <form method="POST" name="form" style="background-color: Silver; ">
-    <big><h4>音声データ追加:</h4></big> <textarea name="voiceData" value="" rows="5" style="height: 30px; width: 300px"></textarea>
-    <input type="submit" value="追加" style="width: 300px; height: 30px"/>
+  <div id="title">
+  音声データ収集システム　動作テスト画面
+  </div>
+  <div id="voicedata">
+    <form method="POST" name="form">
+      音声データ追加: <textarea type="text" name="voiceData" value="" ></textarea>
+      <input type="submit" value="追加" />
+    </form>
+  </div>
+  <form th:action="@{/voice/update}" method="post">
+    全件更新：<input class="btn btn-danger" type="submit" value="更新"/>
   </form>
-  <form th:action="@{/voice/update}" method="post" style="background-color: Silver; ">
-    <h3>全件更新：</h3><input class="btn btn-danger" type="submit" value="更新" style="width: 253px; height: 44px"/>
-  </form>
 
-  <form th:action="@{/voice/select_delete}" method="post" style="background-color: Silver; ">
-    <h3>指定のデータ(ID)削除: </h3><input type="text" name="voiceID" value="" style="height: 20px; "/>
-    <input type="submit" value="削除" style="width: 202px; height: 49px"/>
+  <form th:action="@{/voice/select_delete}" method="post">
+    指定のデータ削除: <input type="text" name="voiceID" value="" />
+    <input type="submit" value="削除" />
   </form>
   
-  <form th:action="@{/voice/delete}" method="post" style="background-color: Silver; ">
-    <h3>音声データ全削除：<input class="btn btn-danger" type="submit" value="削除" style="width: 195px; height: 30px"/></h3>
+  <form th:action="@{/voice/delete}" method="post">
+    音声データ全削除：<input class="btn btn-danger" type="submit" value="削除"/>
   </form>
 
 
-  <table class="table table-striped table-bordered table-condensed">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>音声データ</th>
-				<th>ユーザ名</th>
-				<th>日時</th>
-			</tr>
-		</thead>
-		
+  <table border="4" rules="all">
+    <tr>
+        <th>ID</th>
+        <th>音声データ</th>
+        <th>ユーザ名</th>
+        <th>日時</th>
+    </tr>
     <tr th:each="voice : ${voices}">
         <td th:text="${voice.id}">1</td>
         <td th:text="${voice.voice}">音声仮</td>
-        <td th:text="${voice.userid}" style="width: 90px; ">ユーザ名</td>
-        <td th:text="${voice.date}" style="width: 99px; ">日時</td><h1>
-    </h1></tr>
+        <td th:text="${voice.userid}">ユーザ名</td>
+        <td th:text="${voice.date}">日時</td>
+    </tr>
 </table>
 
 </body>
