@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class Voice implements Serializable {
 	@Column(nullable = false)
 	private Integer id;
 	private String voice;
+	@DateTimeFormat(iso=ISO.DATE_TIME)
 	private Date   date;
 	private Integer userid;
 }

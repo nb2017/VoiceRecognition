@@ -12,16 +12,18 @@ import com.example.demo.repository.voiceRepository;
 public class VoiceService {
 	@Autowired
 	voiceRepository repository;
-	
+	/**
+	 * searchメソッド ID指定検索
+	 * @param 検索するID
+	 * @return 音声データ1レコード
+	 */
 	public Voice search(Integer id) {
 		Voice voice = repository.findOne(id);
 		return voice;
 	}
-
 	public List<Voice> findAll()
 	{
 		List<Voice> list = repository.findAll();
-
 		return list;
 	}
 	public Voice FindOne(int id){
